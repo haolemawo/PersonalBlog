@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta http-equiv="Content-Language" content="en" />
+    <meta name="msapplication-TileColor" content="#2d89ef" />
+    <meta name="theme-color" content="#4188c9" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="MobileOptimized" content="320" />
+    <link rel="icon" href="./assets/images/blog.png" type="image/x-icon" />
+    <link rel="shortcut icon" type="image/x-icon" href="./assets/images/blog.png" />
+    <!-- Generated: 2019-04-04 16:57:42 +0200 -->
+    <title>River-And-Boat</title>
+    <link rel="stylesheet" href="./assets/css/confirm/styles.css" />
+    <link rel="stylesheet" href="./assets/js/confirm/jquery.confirm.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,400,400i,500,500i,600,600i,700,700i&amp;subset=latin-ext" />
+
+    <link rel="stylesheet" href="./assets/css/alert/jquery.gritter.css" />
+
+    <link href="./assets/css/editor/style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./assets/css/editor/editormd.css" />
+    <link rel="shortcut icon" href="https://pandao.github.io/editor.md/favicon.ico" type="image/x-icon" />
+
+    <script src="./assets/js/editor/jquery.min.js"></script>
+    <script src="./assets/js/alert/jquery.gritter.min.js"></script>
+    <!-- Dashboard Core -->
+    <link href="./assets/css/dashboard.css" rel="stylesheet" />
+    <script src="./assets/js/dashboard.js"></script>
+    <!-- c3.js Charts Plugin -->
+    <link href="./assets/plugins/charts-c3/plugin.css" rel="stylesheet" />
+    <script src="./assets/plugins/charts-c3/plugin.js"></script>
+    <!-- Google Maps Plugin -->
+    <link href="./assets/plugins/maps-google/plugin.css" rel="stylesheet" />
+    <script src="./assets/plugins/maps-google/plugin.js"></script>
+    <!-- Input Mask Plugin -->
+    <script src="./assets/plugins/input-mask/plugin.js"></script>
+    <!-- Datatables Plugin -->
+    <script src="./assets/plugins/datatables/plugin.js"></script>
+    <!--cookie-->
+    <script src="./assets/js/cookie/jquery.cookie.js"></script>
+</head>
+
+<body class="">
+    <div class="page">
+        <div class="flex-fill">
+            <div class="header py-4">
+                <div class="container">
+                    <div class="d-flex">
+                        <a class="header-brand" href="./dashboard.html">
+                            <img src="./assets/images/blog.png" class="header-brand-img" />
+                        </a>
+                        <div class="d-flex order-lg-2 ml-auto">
+                            <div class="dropdown d-none d-md-flex">
+                                <a class="nav-link icon" title="注销登陆" id="log-out">
+                                    <i class="fe fe-user-x"></i>
+                                </a>
+                                <a href="./postarticle.html" class="nav-link icon" title="文章发布">
+                                    <i class="fe fe-share"></i>
+                                </a>
+                            </div>
+                            <div>
+                                <a class="nav-link pr-0 leading-none">
+                                    <span class="avatar" id="user-avator" style="background-image: url(./useravator/niming.jpg)"></span>
+                                    <span class="ml-2 d-none d-lg-block">
+                                        <span class="text-default" id="user-name">匿名用户</span>
+                                        <small class="text-muted d-block mt-1" id="user-gender">访客</small>
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                        <a href="#" class="header-toggler d-lg-none ml-3 ml-lg-0" data-toggle="collapse" data-target="#headerMenuCollapse">
+                            <span class="header-toggler-icon"></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="header collapse d-lg-flex p-0" id="headerMenuCollapse">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-lg-3 ml-auto">
+                            <form class="input-icon my-3 my-lg-0">
+                                <input type="search" class="form-control header-search" placeholder="Search&hellip;"
+                                    tabindex="1" />
+                                <div class="input-icon-addon">
+                                    <i class="fe fe-search"></i>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-lg order-lg-first">
+                            <ul class="nav nav-tabs border-0 flex-column flex-lg-row">
+                                <li class="nav-item">
+                                    <a href="./dashboard.html" class="nav-link"><i class="fe fe-home"></i> 主页</a>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a href="./articlelist.html" class="nav-link active"><i class="fe fe-calendar"></i>
+                                        技术随笔</a>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a href="./aboutauthor.html" class="nav-link" data-toggle="dropdown"><i class="fe fe-file"></i>
+                                        关于作者</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-7.5 container" style="margin-top: 20px">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title col-md-10" id="article-title"></h3>
+                        <button id="edit-article" class="btn btn-green col-md-1" style="margin-right: 20px">修改文章</button>
+                        <button id="delete-article" class="btn btn-danger col-md-1">删除文章</button>
+                    </div>
+
+                    <div class="card-body">
+                        <div id="carousel-indicators" class="carousel slide" data-ride="carousel">
+                            <div id="test-editormd-view">
+                                <textarea style="display:none;" name="test-editormd-markdown-doc" id="contentHtml"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <h5 class="card-aside col-md-4" style="display: inline;margin-right: 30px" id="publish-time"></h5>
+                        <h5 class="card-aside col-md-4" style="display: inline;margin-right: 30px" id="view-count"></h5>
+                        <h5 class="card-aside col-md-3" style="display: inline" id="publish-person"></h5>
+                    </div>
+                </div>
+                <script>
+                    var articleID = "";
+                    var replySB = "";
+                    var acctoken = "";
+
+                    $(function () {
+                        //登陆
+                        $("#user-avator").click(function () {
+                            //跳转到登陆界面
+                            if ($("#user-name").text() != "匿名用户") {
+                                jQuery.gritter.add({
+                                    title: '提示',
+                                    text: '您已经登陆了',
+                                    class_name: 'growl-info',
+                                    image: 'images/screen.png',
+                                    sticky: false,
+                                    time: ''
+                                });
+                                return;
+                            }
+                            window.location.href = encodeURI("login.html");
+                        });
+
+                        //登出
+                        $("#log-out").click(function () {
+                            if ($("#user-name").text() == "匿名用户") {
+                                jQuery.gritter.add({
+                                    title: '提示',
+                                    text: '您还未登陆',
+                                    class_name: 'growl-info',
+                                    image: 'images/screen.png',
+                                    sticky: false,
+                                    time: ''
+                                });
+                                return;
+                            }
+                            //首先删除cookie
+                            $.cookie('access-token', null);
+                            //跳转到登陆界面
+                            window.location.href = encodeURI("login.html");
+                        });
+
+                        //获取access-token
+                        acctoken = $.cookie('access-token');
+                        //利用该aaccess-token获取用户信息
+                        if (acctoken != undefined && acctoken != "null") {
+                            //如果已经登陆，则获取用户信息
+                            $.ajax({
+                                type: "GET",
+                                url: "http://localhost:5001/connect/userinfo",
+                                dataType: "json",
+                                contentType: "application/json;charset=utf-8",
+                                headers: {
+                                    Authorization: "Bearer " + acctoken,
+                                },
+                                success: function (result) {
+                                    $("#user-name").text(result.name);
+                                    $("#user-gender").text(result.gender); //用户身份
+                                    $("#user-avator").css("background-image", "url(" +
+                                        result.picture + ")");
+                                },
+                                error: function (result) {
+                                    jQuery.gritter.add({
+                                        title: '错误',
+                                        text: '获取身份信息失败',
+                                        class_name: 'growl-danger',
+                                        image: 'images/screen.png',
+                                        sticky: false,
+                                        time: ''
+                                    });
+                                }
+                            });
+                        }
+
+                        var getUrl = window.location.href;
+                        var parameter = getUrl.split("=");
+                        articleID = decodeURI(parameter[1]);
+                        if (articleID != "undefined") {
+                            //利用该articleID获取文章
+                            getArticleDetail();
+                            //加载评论区
+                            getCommentList();
+                        }
+
+                        //修改文章
+                        $("#edit-article").click(function () {
+                            if (articleID != "undefined") {
+                                var newUrl = encodeURI("editarticle.html?articleId=" + articleID);
+                                location.href = newUrl;
+                            }
+                        });
+
+                        //删除文章
+                        $("#delete-article").click(function () {
+                            if ($("#user-name").text() == "匿名用户" || $("#user-gender").text() != "管理员") {
+                                //表示没有删除权限
+                                jQuery.gritter.add({
+                                    title: '提示',
+                                    text: '您没有权限执行此操作',
+                                    class_name: 'growl-success',
+                                    image: 'images/screen.png',
+                                    sticky: false,
+                                    time: ''
+                                });
+                                return;
+                            }
+                            ConfirmToDeleteArticle();
+                        });
+
+                        function ConfirmToDeleteArticle() {
+                            $.confirm({
+                                'title': '确认删除这篇文章吗',
+                                'message': 'Are you sure to delete this article?',
+                                'buttons': {
+                                    'Yes': {
+                                        'class': 'blue',
+                                        'action': function () {
+                                            //发起Ajax请求后台删除记录
+                                            $.ajax({
+                                                type: "DELETE",
+                                                url: "http://localhost:5000/api/services/app/Article/DeleteArticle/" +
+                                                    articleID,
+                                                dataType: "json",
+                                                contentType: "application/json;charset=utf-8",
+                                                headers: {
+                                                    Authorization: "Bearer " + acctoken,
+                                                },
+                                                data: {
+                                                    articleId: articleID
+                                                },
+                                                success: function (result) {
+                                                    if (result.result == true) {
+                                                        var newUrl = encodeURI(
+                                                            "articlelist.html");
+                                                        location.href = newUrl;
+                                                    } else {
+                                                        jQuery.gritter.add({
+                                                            title: '错误',
+                                                            text: '删除文章失败',
+                                                            class_name: 'growl-danger',
+                                                            image: 'images/screen.png',
+                                                            sticky: false,
+                                                            time: ''
+                                                        });
+                                                    }
+                                                },
+                                                error: function (msg) {
+                                                    jQuery.gritter.add({
+                                                        title: '错误',
+                                                        text: '请求删除文章接口失败',
+                                                        class_name: 'growl-danger',
+                                                        image: 'images/screen.png',
+                                                        sticky: false,
+                                                        time: ''
+                                                    });
+                                                }
+                                            });
+                                        }
+                                    },
+                                    'No': {
+                                        'class': 'gray',
+                                        'action': function () {} // Nothing to do in this case. You can as well omit the action property.
+                                    }
+                                }
+                            });
+
+                        }
+
+                        //提交评论
+                        $("#submit-comment").click(function () {
+                            var userName = $("#user-name").text();
+                            var userAvator = $("#user-avator").css("background-image");
+                            alert(userAvator);
+                            var commentContent = $("#comment-content").val();
+
+                            $.ajax({
+                                type: "POST",
+                                url: "http://localhost:5000/api/services/app/Comment/CreateComment",
+                                dataType: "json",
+                                contentType: "application/json;charset=utf-8",
+                                data: JSON.stringify({
+                                    UserName: userName,
+                                    UserAvatorUrl: userAvator,
+                                    Content: commentContent,
+                                    ArticleId: articleID,
+                                    ReplySomebody: replySB
+                                }),
+
+                                success: function (result) {
+                                    //新增评论，动态添加
+                                    var comment = result.result;
+                                    if (comment != null) {
+                                        var tr = $("<tr id='trId" + comment.floor +
+                                            "'></tr>");
+                                        var htmlbody =
+                                            "<td class='text-center'><div class='small text-muted'>" +
+                                            comment.replySomebody + "</div>" +
+                                            "<div class='small text-muted'>" +
+                                            comment.floor + "</div></td>" +
+                                            "<td class='text-center'><div class='avatar d-block' style ='background-image: " +
+                                            comment.userAvatorUrl +
+                                            "'></div></td>" +
+                                            "<td><div>" + comment.userName + "</div>" +
+                                            "<div class='small text-muted'>" + comment.time +
+                                            "</div><td>" +
+                                            "<td><div class='clearfix'><div class='float-md-none'><mall class='text-muted'>" +
+                                            comment.content +
+                                            "</small></div></div></td>" +
+                                            "<td class='text-center' onclick='supportOneComment(" +
+                                            comment.floor +
+                                            ")'><span class='fe fe-thumbs-up'></span><a id='like" +
+                                            comment.floor + "'>" +
+                                            comment.likes + "</a></td>" +
+                                            "<td class='text-center'><span class='fa fa-comment-o'></span> <a style='cursor:pointer;' onclick='replaySomebody(" +
+                                            comment.floor + "," + "\"" + comment.userName +
+                                            "\"" +
+                                            ")'>回复</a></td><td class='w-1'><i class='fe fe-trash' onclick='moveToTrash(" +
+                                            comment.floor + ")'></i></td>";
+                                        tr.html(htmlbody);
+                                        $("#comment-list").append(tr);
+                                    }
+
+                                    //重新恢复Reply
+                                    replySB = "";
+                                    $("#reply-sb").text(replySB);
+                                    //清空评论区
+                                    $("#comment-content").val("");
+
+                                    jQuery.gritter.add({
+                                        title: '提示',
+                                        text: '评论文章成功',
+                                        class_name: 'growl-success',
+                                        image: 'images/screen.png',
+                                        sticky: false,
+                                        time: ''
+                                    });
+                                },
+                                error: function (msg) {
+                                    jQuery.gritter.add({
+                                        title: '错误',
+                                        text: '评论失败',
+                                        class_name: 'growl-danger',
+                                        image: 'images/screen.png',
+                                        sticky: false,
+                                        time: ''
+                                    });
+                                }
+                            });
+                        });
+                    });
+
+                    //发起Ajax请求获取文章
+                    function getArticleDetail() {
+                        $.ajax({
+                            type: "GET",
+                            url: "http://localhost:5000/api/services/app/Article/GetArticleDetail",
+                            dataType: "json",
+                            contentType: "application/json;charset=utf-8",
+                            data: {
+                                articleId: articleID
+                            },
+                            success: function (result) {
+                                //设置标题
+                                $("#article-title").text(result.result.articleName);
+                                //设置发布时间
+                                $("#publish-time").text("发布时间：" + result.result.creationTime);
+                                //设置浏览量
+                                $("#view-count").text("浏览量：" + result.result.pageView);
+                                //设置作者
+                                $("#publish-person").text("作者：" + result.result.author);
+                                //设置文章内容
+                                $("#contentHtml").val(result.result.content);
+                                editormd.markdownToHTML("test-editormd-view", {
+                                    htmlDecode: "style,script,iframe",
+                                    emoji: true,
+                                    taskList: true,
+                                    tex: true, // 默认不解析
+                                    flowChart: true, // 默认不解析
+                                    sequenceDiagram: true // 默认不解析
+                                });
+                            },
+                            error: function (msg) {
+                                jQuery.gritter.add({
+                                    title: '错误',
+                                    text: '文章获取失败，请查看服务器运行状态',
+                                    class_name: 'growl-danger',
+                                    image: 'images/screen.png',
+                                    sticky: false,
+                                    time: ''
+                                });
+                            }
+                        });
+                    }
+
+                    //Ajax获取评论列表
+                    function getCommentList() {
+                        $.ajax({
+                            type: "GET",
+                            url: "http://localhost:5000/api/services/app/Comment/GetCommentList",
+                            dataType: "json",
+                            contentType: "application/json;charset=utf-8",
+                            data: {
+                                articleId: articleID
+                            },
+                            success: function (result) {
+                                //获取评论区列表
+                                var commentLists = result.result;
+                                $.each(commentLists, function (index, value) {
+                                    if (value != null) {
+                                        var tr = $("<tr id='trId" + value.floor + "'></tr>");
+                                        var htmlbody =
+                                            "<td class='text-center'><div class='small text-muted'>" +
+                                            value.replySomebody + "</div>" +
+                                            "<div class='small text-muted'>" +
+                                            value.floor + "</div></td>" +
+                                            "<td class='text-center'><div class='avatar d-block' style ='background-image: " +
+                                            value.userAvatorUrl +
+                                            "'></div></td>" +
+                                            "<td><div>" + value.userName + "</div>" +
+                                            "<div class='small text-muted'>" + value.time +
+                                            "</div><td>" +
+                                            "<td><div class='clearfix'><div class='float-md-none'><mall class='text-muted'>" +
+                                            value.content +
+                                            "</small></div></div></td>" +
+                                            "<td class='text-center' onclick='supportOneComment(" +
+                                            value.floor +
+                                            ")'><span class='fe fe-thumbs-up'></span><a id='like" +
+                                            value.floor + "'>" +
+                                            value.likes + "</a></td>" +
+                                            "<td class='text-center'><span class='fa fa-comment-o'></span> <a style='cursor:pointer;' onclick='replaySomebody(" +
+                                            value.floor + "," + "\"" + value.userName + "\"" +
+                                            ")'>回复</a></td><td class='w-1'><i class='fe fe-trash' onclick='moveToTrash(" +
+                                            value.floor + ")'></i></td>";
+                                        tr.html(htmlbody);
+                                        $("#comment-list").append(tr);
+                                    }
+                                });
+                            },
+                            error: function (msg) {
+                                jQuery.gritter.add({
+                                    title: '错误',
+                                    text: '加载评论列表失败，请查看服务器运行状态',
+                                    class_name: 'growl-danger',
+                                    image: 'images/screen.png',
+                                    sticky: false,
+                                    time: ''
+                                });
+                            }
+                        });
+                    }
+
+                    //回复某人
+                    function replaySomebody(floor, userName) {
+                        //滚动到评论区位置
+                        scrollTo('#article-title', 300);
+                        replySB = "回复 #" + floor + " " + userName;
+                        $("#reply-sb").text(replySB);
+                    }
+
+                    //给某个评论点赞
+                    function supportOneComment(floor) {
+                        var likes = $("#like" + floor).text();
+                        $.ajax({
+                            type: "POST",
+                            url: "http://localhost:5000/api/services/app/Comment/PostLikes",
+                            dataType: "json",
+                            contentType: "application/json;charset=utf-8",
+                            data: JSON.stringify({
+                                ArticleId: articleID,
+                                Floor: floor,
+                                Likes: likes
+                            }),
+                            success: function (result) {
+                                //返回文章的当前点赞数
+                                var currentLikes = result.result;
+                                //更新UI
+                                $("#like" + floor).text(currentLikes);
+                                jQuery.gritter.add({
+                                    title: '提示',
+                                    text: '评论点赞成功',
+                                    class_name: 'growl-success',
+                                    image: 'images/screen.png',
+                                    sticky: false,
+                                    time: ''
+                                });
+                            },
+                            error: function (msg) {
+                                jQuery.gritter.add({
+                                    title: '错误',
+                                    text: '评论点赞失败，请查看服务器运行状态',
+                                    class_name: 'growl-danger',
+                                    image: 'images/screen.png',
+                                    sticky: false,
+                                    time: ''
+                                });
+                            }
+                        });
+                    }
+
+                    //删除某个评论
+                    function moveToTrash(floor) {
+                        if ($("#user-name").text() == "匿名用户" || $("#user-gender").text() != "管理员") {
+                            //表示没有删除权限
+                            jQuery.gritter.add({
+                                title: '提示',
+                                text: '您没有权限执行此操作',
+                                class_name: 'growl-success',
+                                image: 'images/screen.png',
+                                sticky: false,
+                                time: ''
+                            });
+                            return;
+                        }
+
+                        //待删除的表Id
+                        var deleteTrId = "#trId" + floor;
+
+                        //调用删除评论接口
+                        $.ajax({
+                            type: "DELETE",
+                            url: "http://localhost:5000/api/services/app/Comment/PostRemoveComment/" +
+                                articleID + "/" + floor,
+                            dataType: "json",
+                            contentType: "application/json;charset=utf-8",
+                            headers: {
+                                Authorization: "Bearer " + acctoken,
+                            },
+                            success: function (result) {
+                                //返回文章的当前点赞数
+                                var currentLikes = result.result;
+                                //更新UI
+                                $(deleteTrId).remove();
+                                jQuery.gritter.add({
+                                    title: '提示',
+                                    text: '删除评论成功',
+                                    class_name: 'growl-success',
+                                    image: 'images/screen.png',
+                                    sticky: false,
+                                    time: ''
+                                });
+                            },
+                            error: function (msg) {
+                                jQuery.gritter.add({
+                                    title: '错误',
+                                    text: '删除评论失败，请查看服务器运行状态',
+                                    class_name: 'growl-danger',
+                                    image: 'images/screen.png',
+                                    sticky: false,
+                                    time: ''
+                                });
+                            }
+                        });
+                    }
+
+                    //滑动到某个元素位置
+                    function scrollTo(ele, speed) {
+                        if (!speed) speed = 300;
+                        if (!ele) {
+                            $("html,body").animate({
+                                scrollTop: 0
+                            }, speed);
+                        } else {
+                            if (ele.length > 0) $("html,body").animate({
+                                scrollTop: $(ele).offset().top
+                            }, speed);
+                        }
+                        return false;
+                    }
+
+                </script>
+                <script src="./assets/js/confirm/jquery.confirm.js"></script>
+                <script src="./assets/js/editor/lib/marked.min.js"></script>
+                <script src="./assets/js/editor/lib/raphael.min.js"></script>
+                <script src="./assets/js/editor/lib/underscore.min.js"></script>
+                <script src="./assets/js/editor/lib/sequence-diagram.min.js"></script>
+                <script src="./assets/js/editor/lib/flowchart.min.js"></script>
+                <script src="./assets/js/editor/lib/jquery.flowchart.min.js"></script>
+                <script src="./assets/js/editor/lib/prettify.min.js"></script>
+                <script src="./assets/js/editor/editormd.js"></script>
+            </div>
+
+            <!--留言板-->
+            <div class="col-md-7.5 container" style="margin-top: 20px">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title" id="article-title">评论列表</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group mb-0">
+                            <div class="row">
+                                <label class="form-label col-md-2" id="reply-sb"></label>
+                            </div>
+                            <textarea rows="5" style="resize:none;" class="form-control" placeholder="写下你的感想" id="comment-content"></textarea>
+                            <div class="card-footer text-right">
+                                <button id="submit-comment" class="btn btn-primary">提交评论</button>
+                            </div>
+                        </div>
+                        <hr>
+                        <table class="table card-table table-vcenter" id="comment-list">
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+
+</html>

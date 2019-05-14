@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta http-equiv="Content-Language" content="en" />
+    <meta name="msapplication-TileColor" content="#2d89ef" />
+    <meta name="theme-color" content="#4188c9" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="MobileOptimized" content="320" />
+    <link rel="icon" href="./assets/images/blog.png" type="image/x-icon" />
+    <link rel="shortcut icon" type="image/x-icon" href="./assets/images/blog.png" />
+    <!-- Generated: 2019-04-04 16:57:42 +0200 -->
+    <title>River-And-Boat</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,400,400i,500,500i,600,600i,700,700i&amp;subset=latin-ext" />
+    <script src="./assets/js/editor/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="./assets/css/alert/jquery.gritter.css" />
+
+    <!-- Dashboard Core -->
+    <link href="./assets/css/dashboard.css" rel="stylesheet" />
+    <script src="./assets/js/dashboard.js"></script>
+    <!-- c3.js Charts Plugin -->
+    <link href="./assets/plugins/charts-c3/plugin.css" rel="stylesheet" />
+    <script src="./assets/plugins/charts-c3/plugin.js"></script>
+    <!-- Google Maps Plugin -->
+    <link href="./assets/plugins/maps-google/plugin.css" rel="stylesheet" />
+    <script src="./assets/plugins/maps-google/plugin.js"></script>
+    <!-- Input Mask Plugin -->
+    <script src="./assets/plugins/input-mask/plugin.js"></script>
+    <!-- Datatables Plugin -->
+    <script src="./assets/plugins/datatables/plugin.js"></script>
+    <script src="./assets/js/alert/jquery.gritter.min.js"></script>
+    <!--Cookie-->
+    <script src="./assets/js/cookie/jquery.cookie.js"></script>
+</head>
+
+<body class="">
+    <div class="page">
+        <div class="flex-fill">
+            <div class="header py-4">
+                <div class="container">
+                    <div class="d-flex">
+                        <a class="header-brand" href="./dashboard.html">
+                            <img src="./assets/images/blog.png" class="header-brand-img" />
+                        </a>
+                        <div class="d-flex order-lg-2 ml-auto">
+                            <div class="dropdown d-none d-md-flex">
+                                <a class="nav-link icon" title="注销登陆" id="log-out">
+                                    <i class="fe fe-user-x"></i>
+                                </a>
+                                <a href="./postarticle.html" class="nav-link icon" title="文章发布">
+                                    <i class="fe fe-share"></i>
+                                </a>
+                            </div>
+                            <div>
+                                <a class="nav-link pr-0 leading-none">
+                                    <span class="avatar" id="user-avator" style="background-image: url(./useravator/niming.jpg)"></span>
+                                    <span class="ml-2 d-none d-lg-block">
+                                        <span class="text-default" id="user-name">匿名用户</span>
+                                        <small class="text-muted d-block mt-1" id="user-gender">访客</small>
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                        <a href="#" class="header-toggler d-lg-none ml-3 ml-lg-0" data-toggle="collapse" data-target="#headerMenuCollapse">
+                            <span class="header-toggler-icon"></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="header collapse d-lg-flex p-0" id="headerMenuCollapse">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-lg-3 ml-auto">
+                            <form class="input-icon my-3 my-lg-0">
+                                <input type="search" class="form-control header-search" placeholder="Search&hellip;"
+                                    tabindex="1" />
+                                <div class="input-icon-addon">
+                                    <i class="fe fe-search"></i>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-lg order-lg-first">
+                            <ul class="nav nav-tabs border-0 flex-column flex-lg-row">
+                                <li class="nav-item">
+                                    <a href="./dashboard.html" class="nav-link active"><i class="fe fe-home"></i> 主页</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="./articlelist.html" class="nav-link"><i class="fe fe-calendar"></i>
+                                        技术随笔</a>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a href="./aboutauthor.html" class="nav-link" data-toggle="dropdown"><i class="fe fe-file"></i>
+                                        关于作者</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="my-3 my-md-5">
+                <div class="container">
+                    <div class="page-header">
+                        <h1 class="page-title">
+                            主页
+                        </h1>
+                    </div>
+                    <div class="row row-cards">
+                        <div class="col-sm-3">
+                            <div class="card">
+                                <div class="card-body p-3 text-center">
+                                    <div class="text-right text-green">
+                                        <i class="fe fe-chevron-up"></i>
+                                    </div>
+                                    <div class="h1 m-0"><a href="./articlelist.html" id="articleCount"></a></div>
+                                    <div class="text-muted mb-4">文章总数</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="card">
+                                <div class="card-body p-3 text-center">
+                                    <div class="text-right text-green">
+                                        <i class="fe fe-chevron-up"></i>
+                                    </div>
+                                    <div class="h1 m-0" id="viewerCount"></div>
+                                    <div class="text-muted mb-4">访问次数</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3 class="card-title">友情链接</h3>
+                                </div>
+                                <div class="card-body row">
+                                    <div class="col-md-3">
+                                        <span class="avatar avatar-md d-block" style="background-image: url(assets/images/github.png)"
+                                            id="github"></span>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <span class="avatar avatar-md d-block" style="background-image: url(assets/images/Docker.png)"
+                                            id="docker"></span>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <span class="avatar avatar-md d-block" style="background-image: url(assets/images/cnblog.png)"
+                                            id="cnblog"></span>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <span class="avatar avatar-md d-block" style="background-image: url(assets/images/NET.png)"
+                                            id="net"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row row-cards">
+                        <div class="col-lg-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3 class="card-title">最新文章</h3>
+                                </div>
+                                <div class="table-responsive" style="height: 30rem">
+                                    <table class="table card-table table-vcenter">
+                                        <thead>
+                                            <tr>
+                                                <th colspan="2">文章名</th>
+                                                <th>发布者</th>
+                                                <th>时间</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="latestArticle"></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <!--begin 最热文章-->
+                            <div class="card" style="height:33.6rem;overflow:auto">
+                                <div class="card-header">
+                                    <h4 class="card-title">最热文章</h4>
+                                </div>
+                                <table class="table card-table" id="hot-article">
+                                </table>
+                            </div>
+                            <!--end 最热文章-->
+                        </div>
+                    </div>
+
+                    <div class="page-header">
+                        <h1 class="page-title">
+                            作者推荐
+                        </h1>
+                    </div>
+
+                    <div class="row row-cards row-deck" id="author-recommend">
+
+                    </div>
+                </div>
+                <script>
+                    $(function () {
+                        //友情链接
+                        $("#net").click(function () {
+                            window.location.href =
+                                "https://docs.microsoft.com/en-us/aspnet/core/?view=aspnetcore-2.2";
+                        });
+
+                        $("#cnblog").click(function () {
+                            window.location.href = "https://www.cnblogs.com";
+                        });
+
+                        $("#docker").click(function () {
+                            window.location.href = "https://docs.docker.com/get-started";
+                        });
+
+                        $("#github").click(function () {
+                            window.location.href = "https://github.com";
+                        });
+                        //登陆
+                        $("#user-avator").click(function () {
+                            //跳转到登陆界面
+                            if ($("#user-name").text() != "匿名用户") {
+                                jQuery.gritter.add({
+                                    title: '提示',
+                                    text: '您已经登陆了',
+                                    class_name: 'growl-info',
+                                    image: 'images/screen.png',
+                                    sticky: false,
+                                    time: ''
+                                });
+                                return;
+                            }
+                            window.location.href = encodeURI("login.html");
+                        });
+
+                        //登出
+                        $("#log-out").click(function () {
+                            if ($("#user-name").text() == "匿名用户") {
+                                jQuery.gritter.add({
+                                    title: '提示',
+                                    text: '您还未登陆',
+                                    class_name: 'growl-info',
+                                    image: 'images/screen.png',
+                                    sticky: false,
+                                    time: ''
+                                });
+                                return;
+                            }
+                            //首先删除cookie
+                            $.cookie('access-token', null);
+                            //跳转到登陆界面
+                            window.location.href = encodeURI("login.html");
+                        });
+
+                        //获取access-token
+                        var acctoken = $.cookie('access-token');
+
+                        //利用该aaccess-token获取用户信息
+                        if (acctoken != undefined && acctoken != "null") {
+                            //如果已经登陆，则获取用户信息
+                            $.ajax({
+                                type: "GET",
+                                url: "http://localhost:5001/connect/userinfo",
+                                dataType: "json",
+                                contentType: "application/json;charset=utf-8",
+                                headers: {
+                                    Authorization: "Bearer " + acctoken,
+                                },
+                                success: function (result) {
+                                    $("#user-name").text(result.name);
+                                    $("#user-gender").text(result.gender); //用户身份
+                                    $("#user-avator").css("background-image", "url(" +
+                                        result.picture + ")");
+                                },
+                                error: function (result) {
+                                    jQuery.gritter.add({
+                                        title: '错误',
+                                        text: '获取身份信息失败',
+                                        class_name: 'growl-danger',
+                                        image: 'images/screen.png',
+                                        sticky: false,
+                                        time: ''
+                                    });
+                                }
+                            });
+                        }
+
+                        //进入页面访问后台接口获取数据
+                        $.ajax({
+                            type: "GET",
+                            url: "http://localhost:5000/api/services/app/MainPage/GetMainPageAsync",
+                            dataType: "json",
+                            contentType: "application/json;charset=utf-8",
+                            success: function (result) {
+                                //文章总数
+                                $("#articleCount").text(result.result.articleCount);
+                                //留言总数
+                                $("#leaveMessageCount").text(
+                                    result.result.leaveMessageCount
+                                );
+                                //访客总数
+                                $("#viewerCount").text(result.result.viewerCount);
+                                //获取最新文章集合
+                                var latestArticles = result.result.latestArticlesDtos;
+                                $.each(latestArticles, function (index, value) {
+                                    //动态添加到表格中
+                                    var tr = $(
+                                        "<tr style='cursor: pointer;' onclick='viewDetail(" +
+                                        value.id +
+                                        ")'></tr>");
+                                    tr.html(
+                                        "<td class='w-1'><span class='avatar' style='background-image:url(" +
+                                        value.avator +
+                                        ")'></span></td>" +
+                                        "<td>" +
+                                        value.articleName +
+                                        "</td>" +
+                                        "<td>" +
+                                        value.author +
+                                        "</td>" +
+                                        "<td class='text-nowrap'>" +
+                                        value.creationTime +
+                                        "</td>"
+                                    );
+                                    $("#latestArticle").append(tr);
+                                });
+
+                                //获取最热文章集合
+                                var hotArticles = result.result.hotArticlesDtos;
+                                $.each(hotArticles, function (index, value) {
+                                    //动态添加到表格中
+                                    var tr = $(
+                                        "<tr style='cursor: pointer;' onclick='viewDetail(" +
+                                        value.id +
+                                        ")'></tr>");
+                                    tr.html(
+                                        "<td class='w-1'><span class='avatar' style='background-image:url(" +
+                                        value.avator +
+                                        ")'></span></td>" +
+                                        "<td>" +
+                                        value.articleName +
+                                        "</td>" +
+                                        "<td class='text-right'><span class='text-muted'>" +
+                                        value.pageView + "</span></td>"
+                                    );
+                                    $("#hot-article").append(tr);
+                                });
+
+                                //获取作者推荐集合
+                                var authRecommends = result.result.recommendArticlesDtos;
+                                $.each(authRecommends, function (index, value) {
+                                    var div = $(
+                                        "<div class='col-lg-6' onclick='viewDetail(" +
+                                        value.id + ")'></div>");
+                                    div.html("<div class='card card-aside'>" +
+                                        "<a href='#' class='card-aside-column' style='background-image: url(" +
+                                        value.avator + ")'></a>" +
+                                        "<div class='card-body d-flex flex-column'>" +
+                                        "<h4>" + "<a href='#'>" + value.articleName +
+                                        "</a>" + "</h4>" +
+                                        "<div class='text-muted'>" + value.introduce +
+                                        "</div>" +
+                                        "<div class='d-flex align-items-center pt-5 mt-auto'>" +
+                                        "<div class='avatar avatar-md mr-3' style='background-image: " +
+                                        value.authorAvator + "'></div>" +
+                                        "<div>" +
+                                        "<a href='#' class='text-default'>" +
+                                        value.author + "</a>" +
+                                        "<small class='d-block text-muted'>" +
+                                        value.creationTime + "</small>" +
+                                        "</div>" +
+                                        "<div class='ml-auto text-muted'>" +
+                                        "<a href='javascript:void(0)' class='icon d-md-inline-block ml-3'><i class='fe fe-tag mr-1'></i>" +
+                                        value.articleTags + "</a>" +
+                                        "</div>" + "</div>" + "</div>" +
+                                        "</div>"
+                                    );
+                                    $("#author-recommend").append(div);
+                                });
+                            },
+                            error: function (msg) {
+                                jQuery.gritter.add({
+                                    title: '错误',
+                                    text: '获取首页数据失败，请确认服务器运行状态',
+                                    class_name: 'growl-danger',
+                                    image: 'images/screen.png',
+                                    sticky: false,
+                                    time: ''
+                                });
+                            }
+                        });
+
+                        function setCookie(name, value, days) {
+                            var expires = "";
+                            if (days) {
+                                var date = new Date();
+                                date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+                                expires = "; expires=" + date.toUTCString();
+                            }
+                            document.cookie =
+                                name + "=" + (value || "") + expires + "; path=/";
+                        }
+
+                        function getCookie(name) {
+                            var nameEQ = name + "=";
+                            var ca = document.cookie.split(";");
+                            for (var i = 0; i < ca.length; i++) {
+                                var c = ca[i];
+                                while (c.charAt(0) == " ") c = c.substring(1, c.length);
+                                if (c.indexOf(nameEQ) == 0)
+                                    return c.substring(nameEQ.length, c.length);
+                            }
+                            return null;
+                        }
+
+                        if (!getCookie("bottombar-hidden")) {
+                            $(".js-bottombar").show();
+                        }
+
+                        $(".js-bottombar-close").on("click", function (e) {
+                            $(".js-bottombar").hide();
+                            setCookie("bottombar-hidden", 1, 7);
+
+                            e.preventDefault();
+                            return false;
+                        });
+                    });
+
+                    //查看文章详情
+                    function viewDetail(articleid) {
+                        var articleId = articleid;
+                        if (articleId != "undefined") {
+                            var newUrl = encodeURI("articleread.html?articleId=" + articleId);
+                            location.href = newUrl;
+                        }
+                    }
+
+                </script>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

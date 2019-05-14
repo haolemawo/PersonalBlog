@@ -1,0 +1,169 @@
+2019-05-13 12:39:54.511 +08:00 [WRN] AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures '["zh-CN","zh"]'.
+2019-05-13 12:39:54.558 +08:00 [WRN] AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures '["zh-CN","zh"]'.
+2019-05-13 12:39:56.543 +08:00 [WRN] AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures '["zh-CN","zh"]'.
+2019-05-13 12:39:56.546 +08:00 [WRN] AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures '["zh-CN","zh"]'.
+2019-05-13 12:39:57.287 +08:00 [WRN] AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures '["zh-CN","zh"]'.
+2019-05-13 12:39:57.290 +08:00 [WRN] AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures '["zh-CN","zh"]'.
+2019-05-13 12:40:01.028 +08:00 [WRN] AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures '["zh-CN","zh"]'.
+2019-05-13 12:40:01.030 +08:00 [WRN] AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures '["zh-CN","zh"]'.
+2019-05-13 12:40:05.744 +08:00 [WRN] 测试日志
+2019-05-13 13:46:37.798 +08:00 [WRN] AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures '["zh-CN","zh"]'.
+2019-05-13 13:46:37.841 +08:00 [WRN] AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures '["zh-CN","zh"]'.
+2019-05-13 13:46:41.292 +08:00 [WRN] AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures '["zh-CN","zh"]'.
+2019-05-13 13:46:41.294 +08:00 [WRN] AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures '["zh-CN","zh"]'.
+2019-05-13 13:46:42.210 +08:00 [WRN] AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures '["zh-CN","zh"]'.
+2019-05-13 13:46:42.211 +08:00 [WRN] AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures '["zh-CN","zh"]'.
+2019-05-13 13:46:51.557 +08:00 [WRN] AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures '["zh-CN","zh"]'.
+2019-05-13 13:46:51.559 +08:00 [WRN] AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures '["zh-CN","zh"]'.
+2019-05-13 13:46:51.562 +08:00 [WRN] The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+2019-05-13 13:46:54.411 +08:00 [ERR] 错误信息：An error occurred while updating the entries. See the inner exception for details.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while updating the entries. See the inner exception for details. ---> MySql.Data.MySqlClient.MySqlException: Cannot add or update a child row: a foreign key constraint fails (`PersonalBlog`.`Articles`, CONSTRAINT `FK_Articles_ArticleType_TypeId` FOREIGN KEY (`TypeId`) REFERENCES `ArticleType` (`Id`) ON DELETE RESTRICT) ---> MySql.Data.MySqlClient.MySqlException: Cannot add or update a child row: a foreign key constraint fails (`PersonalBlog`.`Articles`, CONSTRAINT `FK_Articles_ArticleType_TypeId` FOREIGN KEY (`TypeId`) REFERENCES `ArticleType` (`Id`) ON DELETE RESTRICT)
+   at MySqlConnector.Core.ServerSession.TryAsyncContinuation(Task`1 task) in C:\projects\mysqlconnector\src\MySqlConnector\Core\ServerSession.cs:line 1252
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot)
+--- End of stack trace from previous location where exception was thrown ---
+   at MySqlConnector.Core.ResultSet.ReadResultSetHeaderAsync(IOBehavior ioBehavior) in C:\projects\mysqlconnector\src\MySqlConnector\Core\ResultSet.cs:line 43
+   --- End of inner exception stack trace ---
+   at MySql.Data.MySqlClient.MySqlDataReader.ActivateResultSet(ResultSet resultSet) in C:\projects\mysqlconnector\src\MySqlConnector\MySql.Data.MySqlClient\MySqlDataReader.cs:line 81
+   at MySql.Data.MySqlClient.MySqlDataReader.ReadFirstResultSetAsync(IOBehavior ioBehavior) in C:\projects\mysqlconnector\src\MySqlConnector\MySql.Data.MySqlClient\MySqlDataReader.cs:line 307
+   at MySql.Data.MySqlClient.MySqlDataReader.CreateAsync(MySqlCommand command, CommandBehavior behavior, ResultSetProtocol resultSetProtocol, IOBehavior ioBehavior) in C:\projects\mysqlconnector\src\MySqlConnector\MySql.Data.MySqlClient\MySqlDataReader.cs:line 292
+   at MySqlConnector.Core.TextCommandExecutor.ExecuteReaderAsync(String commandText, MySqlParameterCollection parameterCollection, CommandBehavior behavior, IOBehavior ioBehavior, CancellationToken cancellationToken) in C:\projects\mysqlconnector\src\MySqlConnector\Core\TextCommandExecutor.cs:line 37
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.ExecuteAsync(IRelationalConnection connection, DbCommandMethod executeMethod, IReadOnlyDictionary`2 parameterValues, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(DbContext _, ValueTuple`2 parameters, CancellationToken cancellationToken)
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IReadOnlyList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Abp.EntityFrameworkCore.AbpDbContext.SaveChangesAsync(CancellationToken cancellationToken) in D:\Github\aspnetboilerplate\src\Abp.EntityFrameworkCore\EntityFrameworkCore\AbpDbContext.cs:line 224
+   at Abp.EntityFrameworkCore.Repositories.EfCoreRepositoryBase`3.InsertAndGetIdAsync(TEntity entity) in D:\Github\aspnetboilerplate\src\Abp.EntityFrameworkCore\EntityFrameworkCore\Repositories\EfCoreRepositoryBaseOfTEntityAndTPrimaryKey.cs:line 154
+   at Abp.Threading.InternalAsyncHelper.AwaitTaskWithPostActionAndFinallyAndGetResult[T](Task`1 actualReturnValue, Func`1 postAction, Action`1 finalAction) in D:\Github\aspnetboilerplate\src\Abp\Threading\InternalAsyncHelper.cs:line 113
+   at Post.Application.ArticleManage.ArticleAppService.PostArticle(NewArticleDto newArticleDto) in C:\Users\River_And_Boat\Desktop\个人博客\BackPoint\PostHost\Post.Application\ArticleManage\ArticleAppService.cs:line 82
+2019-05-13 13:48:57.033 +08:00 [WRN] AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures '["zh-CN","zh"]'.
+2019-05-13 13:48:57.035 +08:00 [WRN] AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures '["zh-CN","zh"]'.
+2019-05-13 13:48:57.036 +08:00 [WRN] The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+2019-05-13 13:52:40.075 +08:00 [ERR] 错误信息：An error occurred while updating the entries. See the inner exception for details.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while updating the entries. See the inner exception for details. ---> MySql.Data.MySqlClient.MySqlException: Cannot add or update a child row: a foreign key constraint fails (`PersonalBlog`.`Articles`, CONSTRAINT `FK_Articles_ArticleType_TypeId` FOREIGN KEY (`TypeId`) REFERENCES `ArticleType` (`Id`) ON DELETE RESTRICT) ---> MySql.Data.MySqlClient.MySqlException: Cannot add or update a child row: a foreign key constraint fails (`PersonalBlog`.`Articles`, CONSTRAINT `FK_Articles_ArticleType_TypeId` FOREIGN KEY (`TypeId`) REFERENCES `ArticleType` (`Id`) ON DELETE RESTRICT)
+   at MySqlConnector.Core.ServerSession.TryAsyncContinuation(Task`1 task) in C:\projects\mysqlconnector\src\MySqlConnector\Core\ServerSession.cs:line 1252
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot)
+--- End of stack trace from previous location where exception was thrown ---
+   at MySqlConnector.Core.ResultSet.ReadResultSetHeaderAsync(IOBehavior ioBehavior) in C:\projects\mysqlconnector\src\MySqlConnector\Core\ResultSet.cs:line 43
+   --- End of inner exception stack trace ---
+   at MySql.Data.MySqlClient.MySqlDataReader.ActivateResultSet(ResultSet resultSet) in C:\projects\mysqlconnector\src\MySqlConnector\MySql.Data.MySqlClient\MySqlDataReader.cs:line 81
+   at MySql.Data.MySqlClient.MySqlDataReader.ReadFirstResultSetAsync(IOBehavior ioBehavior) in C:\projects\mysqlconnector\src\MySqlConnector\MySql.Data.MySqlClient\MySqlDataReader.cs:line 307
+   at MySql.Data.MySqlClient.MySqlDataReader.CreateAsync(MySqlCommand command, CommandBehavior behavior, ResultSetProtocol resultSetProtocol, IOBehavior ioBehavior) in C:\projects\mysqlconnector\src\MySqlConnector\MySql.Data.MySqlClient\MySqlDataReader.cs:line 292
+   at MySqlConnector.Core.TextCommandExecutor.ExecuteReaderAsync(String commandText, MySqlParameterCollection parameterCollection, CommandBehavior behavior, IOBehavior ioBehavior, CancellationToken cancellationToken) in C:\projects\mysqlconnector\src\MySqlConnector\Core\TextCommandExecutor.cs:line 37
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.ExecuteAsync(IRelationalConnection connection, DbCommandMethod executeMethod, IReadOnlyDictionary`2 parameterValues, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(DbContext _, ValueTuple`2 parameters, CancellationToken cancellationToken)
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IReadOnlyList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Abp.EntityFrameworkCore.AbpDbContext.SaveChangesAsync(CancellationToken cancellationToken) in D:\Github\aspnetboilerplate\src\Abp.EntityFrameworkCore\EntityFrameworkCore\AbpDbContext.cs:line 224
+   at Abp.EntityFrameworkCore.Repositories.EfCoreRepositoryBase`3.InsertAndGetIdAsync(TEntity entity) in D:\Github\aspnetboilerplate\src\Abp.EntityFrameworkCore\EntityFrameworkCore\Repositories\EfCoreRepositoryBaseOfTEntityAndTPrimaryKey.cs:line 154
+   at Abp.Threading.InternalAsyncHelper.AwaitTaskWithPostActionAndFinallyAndGetResult[T](Task`1 actualReturnValue, Func`1 postAction, Action`1 finalAction) in D:\Github\aspnetboilerplate\src\Abp\Threading\InternalAsyncHelper.cs:line 113
+   at Post.Application.ArticleManage.ArticleAppService.PostArticle(NewArticleDto newArticleDto) in C:\Users\River_And_Boat\Desktop\个人博客\BackPoint\PostHost\Post.Application\ArticleManage\ArticleAppService.cs:line 82
+2019-05-13 14:06:18.338 +08:00 [WRN] AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures '["zh-CN","zh"]'.
+2019-05-13 14:06:18.373 +08:00 [WRN] AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures '["zh-CN","zh"]'.
+2019-05-13 14:06:21.189 +08:00 [WRN] AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures '["zh-CN","zh"]'.
+2019-05-13 14:06:21.191 +08:00 [WRN] AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures '["zh-CN","zh"]'.
+2019-05-13 14:06:22.034 +08:00 [WRN] AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures '["zh-CN","zh"]'.
+2019-05-13 14:06:22.036 +08:00 [WRN] AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures '["zh-CN","zh"]'.
+2019-05-13 14:06:27.892 +08:00 [WRN] AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures '["zh-CN","zh"]'.
+2019-05-13 14:06:27.894 +08:00 [WRN] AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures '["zh-CN","zh"]'.
+2019-05-13 17:35:47.227 +08:00 [WRN] AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures '["zh-CN","zh"]'.
+2019-05-13 17:35:47.263 +08:00 [WRN] AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures '["zh-CN","zh"]'.
+2019-05-13 18:19:24.916 +08:00 [WRN] AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures '["zh-CN","zh"]'.
+2019-05-13 18:19:24.954 +08:00 [WRN] AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures '["zh-CN","zh"]'.
+2019-05-13 18:20:31.016 +08:00 [WRN] AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures '["zh-CN","zh"]'.
+2019-05-13 18:20:31.022 +08:00 [WRN] AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures '["zh-CN","zh"]'.
+2019-05-13 18:20:31.031 +08:00 [WRN] The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+2019-05-13 18:20:31.079 +08:00 [WRN] AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures '["zh-CN","zh"]'.
+2019-05-13 18:20:31.080 +08:00 [WRN] AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures '["zh-CN","zh"]'.
+2019-05-13 18:20:31.082 +08:00 [WRN] The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+2019-05-13 19:03:14.684 +08:00 [WRN] AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures '["zh-CN","zh"]'.
+2019-05-13 19:03:14.686 +08:00 [WRN] AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures '["zh-CN","zh"]'.
+2019-05-13 19:03:14.687 +08:00 [WRN] The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+2019-05-13 19:03:14.713 +08:00 [WRN] AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures '["zh-CN","zh"]'.
+2019-05-13 19:03:14.715 +08:00 [WRN] AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures '["zh-CN","zh"]'.
+2019-05-13 19:03:14.716 +08:00 [WRN] The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+2019-05-13 21:53:07.227 +08:00 [WRN] AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures '["zh-CN","zh"]'.
+2019-05-13 21:53:07.270 +08:00 [WRN] AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures '["zh-CN","zh"]'.
+2019-05-13 21:53:09.661 +08:00 [WRN] AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures '["zh-CN","zh"]'.
+2019-05-13 21:53:09.663 +08:00 [WRN] AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures '["zh-CN","zh"]'.
+2019-05-13 21:53:10.420 +08:00 [WRN] AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures '["zh-CN","zh"]'.
+2019-05-13 21:53:10.422 +08:00 [WRN] AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures '["zh-CN","zh"]'.
+2019-05-13 21:54:03.695 +08:00 [WRN] AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures '["zh-CN","zh"]'.
+2019-05-13 21:54:03.699 +08:00 [WRN] AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures '["zh-CN","zh"]'.
+2019-05-13 21:54:03.701 +08:00 [WRN] The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+2019-05-13 21:55:55.388 +08:00 [WRN] AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures '["zh-CN","zh"]'.
+2019-05-13 21:55:55.427 +08:00 [WRN] AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures '["zh-CN","zh"]'.
+2019-05-13 21:56:52.888 +08:00 [WRN] AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures '["zh-CN","zh"]'.
+2019-05-13 21:56:52.890 +08:00 [WRN] AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures '["zh-CN","zh"]'.
+2019-05-13 21:56:52.895 +08:00 [WRN] The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+2019-05-13 21:56:52.930 +08:00 [WRN] AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures '["zh-CN","zh"]'.
+2019-05-13 21:56:52.933 +08:00 [WRN] AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures '["zh-CN","zh"]'.
+2019-05-13 21:56:52.936 +08:00 [WRN] The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+2019-05-13 21:57:12.401 +08:00 [WRN] AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures '["zh-CN","zh"]'.
+2019-05-13 21:57:12.402 +08:00 [WRN] AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures '["zh-CN","zh"]'.
+2019-05-13 21:57:12.405 +08:00 [WRN] The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+2019-05-13 21:57:12.428 +08:00 [WRN] AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures '["zh-CN","zh"]'.
+2019-05-13 21:57:12.429 +08:00 [WRN] AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures '["zh-CN","zh"]'.
+2019-05-13 21:57:12.430 +08:00 [WRN] The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+2019-05-13 21:58:08.709 +08:00 [WRN] AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures '["zh-CN","zh"]'.
+2019-05-13 21:58:08.712 +08:00 [WRN] AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures '["zh-CN","zh"]'.
+2019-05-13 21:58:08.715 +08:00 [WRN] The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+2019-05-13 21:58:08.757 +08:00 [WRN] AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures '["zh-CN","zh"]'.
+2019-05-13 21:58:08.760 +08:00 [WRN] AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures '["zh-CN","zh"]'.
+2019-05-13 21:58:08.762 +08:00 [WRN] The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+2019-05-13 21:58:23.016 +08:00 [WRN] AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures '["zh-CN","zh"]'.
+2019-05-13 21:58:23.018 +08:00 [WRN] AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures '["zh-CN","zh"]'.
+2019-05-13 21:58:23.020 +08:00 [WRN] The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+2019-05-13 21:58:23.045 +08:00 [WRN] AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures '["zh-CN","zh"]'.
+2019-05-13 21:58:23.047 +08:00 [WRN] AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures '["zh-CN","zh"]'.
+2019-05-13 21:58:23.051 +08:00 [WRN] The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+2019-05-13 21:58:38.022 +08:00 [WRN] AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures '["zh-CN","zh"]'.
+2019-05-13 21:58:38.024 +08:00 [WRN] AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures '["zh-CN","zh"]'.
+2019-05-13 21:58:38.028 +08:00 [WRN] The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+2019-05-13 21:58:38.062 +08:00 [WRN] AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures '["zh-CN","zh"]'.
+2019-05-13 21:58:38.064 +08:00 [WRN] AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures '["zh-CN","zh"]'.
+2019-05-13 21:58:38.066 +08:00 [WRN] The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+2019-05-13 21:58:50.697 +08:00 [WRN] AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures '["zh-CN","zh"]'.
+2019-05-13 21:58:50.698 +08:00 [WRN] AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures '["zh-CN","zh"]'.
+2019-05-13 21:58:50.700 +08:00 [WRN] The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+2019-05-13 21:58:50.722 +08:00 [WRN] AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures '["zh-CN","zh"]'.
+2019-05-13 21:58:50.723 +08:00 [WRN] AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures '["zh-CN","zh"]'.
+2019-05-13 21:58:50.725 +08:00 [WRN] The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+2019-05-13 22:12:10.326 +08:00 [WRN] AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures '["zh-CN","zh"]'.
+2019-05-13 22:12:10.332 +08:00 [WRN] AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures '["zh-CN","zh"]'.
+2019-05-13 22:12:10.335 +08:00 [WRN] The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+2019-05-13 22:12:10.390 +08:00 [WRN] AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures '["zh-CN","zh"]'.
+2019-05-13 22:12:10.392 +08:00 [WRN] AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures '["zh-CN","zh"]'.
+2019-05-13 22:12:10.394 +08:00 [WRN] The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+2019-05-13 22:12:25.779 +08:00 [WRN] AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures '["zh-CN","zh"]'.
+2019-05-13 22:12:25.780 +08:00 [WRN] AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures '["zh-CN","zh"]'.
+2019-05-13 22:12:25.781 +08:00 [WRN] The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+2019-05-13 22:31:49.948 +08:00 [WRN] AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures '["zh-CN","zh"]'.
+2019-05-13 22:31:49.950 +08:00 [WRN] AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures '["zh-CN","zh"]'.
+2019-05-13 22:31:49.951 +08:00 [WRN] The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+2019-05-13 22:31:50.222 +08:00 [WRN] AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures '["zh-CN","zh"]'.
+2019-05-13 22:31:50.225 +08:00 [WRN] AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures '["zh-CN","zh"]'.
+2019-05-13 22:31:50.228 +08:00 [WRN] The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+2019-05-13 22:31:54.454 +08:00 [WRN] AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures '["zh-CN","zh"]'.
+2019-05-13 22:31:54.456 +08:00 [WRN] AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures '["zh-CN","zh"]'.
+2019-05-13 22:31:54.460 +08:00 [WRN] The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+2019-05-13 22:31:54.489 +08:00 [WRN] AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures '["zh-CN","zh"]'.
+2019-05-13 22:31:54.490 +08:00 [WRN] AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures '["zh-CN","zh"]'.
+2019-05-13 22:31:54.492 +08:00 [WRN] The CORS protocol does not allow specifying a wildcard (any) origin and credentials at the same time. Configure the policy by listing individual origins if credentials needs to be supported.
+2019-05-13 22:32:47.893 +08:00 [WRN] AcceptLanguageHeaderRequestCultureProvider returned the following unsupported cultures '["zh-CN","zh"]'.
+2019-05-13 22:32:47.928 +08:00 [WRN] AcceptLanguageHeaderRequestCultureProvider returned the following unsupported UI Cultures '["zh-CN","zh"]'.

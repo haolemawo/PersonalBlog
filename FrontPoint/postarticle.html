@@ -1,0 +1,469 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Content-Language" content="en" />
+    <meta name="msapplication-TileColor" content="#2d89ef">
+    <meta name="theme-color" content="#4188c9">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+
+    <link rel="stylesheet" href="./assets/css/alert/jquery.gritter.css" />
+
+    <link rel="icon" href="./assets/images/blog.png" type="image/x-icon" />
+    <link rel="shortcut icon" type="image/x-icon" href="./assets/images/blog.png" />
+    <!-- Generated: 2019-04-04 16:57:42 +0200 -->
+    <title>River-And-Boat</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,400,400i,500,500i,600,600i,700,700i&amp;subset=latin-ext">
+
+    <script src="./assets/js/editor/jquery.min.js"></script>
+    <!-- Dashboard Core -->
+    <link href="./assets/css/dashboard.css" rel="stylesheet" />
+    <script src="./assets/js/dashboard.js"></script>
+    <!-- c3.js Charts Plugin -->
+    <link href="./assets/plugins/charts-c3/plugin.css" rel="stylesheet" />
+    <script src="./assets/plugins/charts-c3/plugin.js"></script>
+    <!-- Google Maps Plugin -->
+    <link href="./assets/plugins/maps-google/plugin.css" rel="stylesheet" />
+    <script src="./assets/plugins/maps-google/plugin.js"></script>
+    <!-- Input Mask Plugin -->
+    <script src="./assets/plugins/input-mask/plugin.js"></script>
+    <!-- Datatables Plugin -->
+    <script src="./assets/plugins/datatables/plugin.js"></script>
+
+    <link href="./assets/css/editor/style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./assets/css/editor/editormd.css" />
+    <link rel="shortcut icon" href="https://pandao.github.io/editor.md/favicon.ico" type="image/x-icon" />
+
+    <script src="./assets/js/alert/jquery.gritter.min.js"></script>
+
+    <script src="./assets/js/editor/editormd.js"></script>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!--cookie-->
+    <script src="./assets/js/cookie/jquery.cookie.js"></script>
+
+    <script type="text/javascript">
+        //获取accessToken
+        var acctoken = "";
+        //文章类型绑定
+        function bindingArticleType() {
+            $.ajax({
+                type: "GET",
+                url: "http://localhost:5000/api/services/app/Article/GetArticleType",
+                dataType: "json",
+                contentType: "application/json;charset=utf-8",
+                success: function (result) {
+                    //获取类型列表
+                    var articleTypeList = result.result;
+                    $.each(articleTypeList, function (index, value) {
+                        //动态绑定select下拉列表
+                        $("#aiticle-type").append("<option value='" + value.id +
+                            "' articleAvator='" + value.typeAvator + "'>" + value.typeName +
+                            "</option>");
+                    });
+                },
+                error: function (msg) {
+                    jQuery.gritter.add({
+                        title: '错误',
+                        text: '查询文章失败，请确认服务器运行状态',
+                        class_name: 'growl-danger',
+                        image: 'images/screen.png',
+                        sticky: false,
+                        time: ''
+                    });
+                }
+            });
+        }
+
+        $(function () {
+            //登陆
+            $("#user-avator").click(function () {
+                //跳转到登陆界面
+                if ($("#user-name").text() != "匿名用户") {
+                    jQuery.gritter.add({
+                        title: '提示',
+                        text: '您已经登陆了',
+                        class_name: 'growl-info',
+                        image: 'images/screen.png',
+                        sticky: false,
+                        time: ''
+                    });
+                    return;
+                }
+                window.location.href = encodeURI("login.html");
+            });
+
+            //登出
+            $("#log-out").click(function () {
+                if ($("#user-name").text() == "匿名用户") {
+                    jQuery.gritter.add({
+                        title: '提示',
+                        text: '您还未登陆',
+                        class_name: 'growl-info',
+                        image: 'images/screen.png',
+                        sticky: false,
+                        time: ''
+                    });
+                    return;
+                }
+                //首先删除cookie
+                $.cookie('access-token', null);
+                //跳转到登陆界面
+                window.location.href = encodeURI("login.html");
+            });
+
+            //获取access-token
+            acctoken = $.cookie('access-token');
+
+            //利用该aaccess-token获取用户信息
+            if (acctoken != undefined && acctoken != "null") {
+                //如果已经登陆，则获取用户信息
+                $.ajax({
+                    type: "GET",
+                    url: "http://localhost:5001/connect/userinfo",
+                    dataType: "json",
+                    contentType: "application/json;charset=utf-8",
+                    headers: {
+                        Authorization: "Bearer " + acctoken,
+                    },
+                    success: function (result) {
+                        $("#user-name").text(result.name);
+                        $("#user-gender").text(result.gender); //用户身份
+                        $("#user-avator").css("background-image", "url(" +
+                            result.picture + ")");
+                        //判断权限
+                        if ($("#user-name").text() != "匿名用户" && $("#user-gender").text() == "管理员") {
+
+                        } else {
+                            //没有权限，跳转至登陆界面，并传入redirect_url
+                            var currentUrl = window.location.href;
+                            location.href = encodeURI("login.html?redirect_url=" +
+                                currentUrl);
+                        }
+                    },
+                    error: function (result) {
+                        var currentUrl = window.location.href;
+                        location.href = encodeURI("login.html?redirect_url=" +
+                            currentUrl);
+                    }
+                });
+            } else {
+                //没有acctoken，直接跳转至登陆界面
+                var currentUrl = window.location.href;
+                location.href = encodeURI("login.html?redirect_url=" +
+                    currentUrl);
+            }
+
+            //加载下拉列表
+            bindingArticleType();
+
+            var editor = editormd("test-editormd", {
+                height: 720,
+                path: './lib/',
+                imageUpload: true,
+                imageFormats: ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
+                imageUploadURL: "uploadfile",
+                onfullscreen: function () {
+                    console.log("onfullscreen =>", this, this.id, this.settings);
+                },
+                onfullscreenExit: function () {
+                    console.log("onfullscreenExit =>", this, this.id, this.settings);
+                }
+            });
+
+            $("#submit").click(function () {
+                var articleTags = "";
+                var param = $("#article_form").serialize();
+                var paramOfChinese = decodeURIComponent(param, true);
+
+                var articleType = $('#aiticle-type option:selected').val();
+                var articleTitle = $('#article-title').val();
+                var articleIntroduce = $('#article-introduce').val();
+                var articleAvator = $('#aiticle-type option:selected').attr("articleAvator");
+
+                //获取所有被选中的标签
+                $("input[name='value']:checked").each(function (i) {
+                    articleTags += $(this).val() + ",";
+                });
+
+                if (articleTitle == "") {
+                    jQuery.gritter.add({
+                        title: '错误',
+                        text: '文章标题不能为空',
+                        class_name: 'growl-danger',
+                        image: 'images/screen.png',
+                        sticky: false,
+                        time: ''
+                    });
+                    //设置样式
+                    $('#article-title').css("border", "1px solid red");
+                    return;
+                }
+
+                if (paramOfChinese == "") {
+                    jQuery.gritter.add({
+                        title: '错误',
+                        text: '文章内容不能为空',
+                        class_name: 'growl-danger',
+                        image: 'images/screen.png',
+                        sticky: false,
+                        time: ''
+                    });
+                    $("#article_form").css("border", "1px solid red");
+                    return;
+                }
+
+                if (articleTags == "") {
+                    jQuery.gritter.add({
+                        title: '错误',
+                        text: '请至少选择一个标签',
+                        class_name: 'growl-danger',
+                        image: 'images/screen.png',
+                        sticky: false,
+                        time: ''
+                    });
+                    return;
+                }
+                var IsRecommend = $("#IsRecommend").prop("checked");
+                //使用Ajax向WebApi发起添加文章的请求
+                $.ajax({
+                    type: "POST",
+                    url: "http://localhost:5000/api/services/app/Article/PostArticle",
+                    dataType: "json",
+                    contentType: "application/json;charset=utf-8",
+                    headers: {
+                        Authorization: "Bearer " + acctoken,
+                    },
+                    data: JSON.stringify({
+                        ArticleName: articleTitle,
+                        Avator: articleAvator,
+                        TypeId: articleType,
+                        ArticleTags: articleTags,
+                        ArticleContent: paramOfChinese,
+                        Introduce: articleIntroduce,
+                        IsRecommend: IsRecommend,
+                        AuthorAvator: $("#user-avator").css("background-image"),
+                        Author: $("#user-name").text()
+                    }),
+                    success: function (result) {
+                        //成功发布文章后，创建该文章对应的评论区
+                        //获取文章Id
+                        var articleId = result.result;
+                        $.ajax({
+                            type: "POST",
+                            url: "http://localhost:5000/api/services/app/Comment/CreateCommentArea",
+                            dataType: "json",
+                            contentType: "application/json;charset=utf-8",
+                            headers: {
+                                Authorization: "Bearer " + acctoken,
+                            },
+                            data: JSON.stringify({
+                                articleId: articleId
+                            }),
+                            success: function (result) {
+                                if (result.result == false) {
+                                    jQuery.gritter.add({
+                                        title: '错误',
+                                        text: '创建评论区失败，请查看异常日志',
+                                        class_name: 'growl-danger',
+                                        image: 'images/screen.png',
+                                        sticky: false,
+                                        time: ''
+                                    });
+                                } else {
+                                    //跳转到文章详情界面
+                                    if (articleId != "undefined") {
+                                        var newUrl = encodeURI(
+                                            "articleread.html?articleId=" +
+                                            articleId);
+                                        location.href = newUrl;
+                                    }
+                                }
+                            },
+                            error: function (result) {
+                                jQuery.gritter.add({
+                                    title: '错误',
+                                    text: '创建评论区失败，请确认服务器运行状态',
+                                    class_name: 'growl-danger',
+                                    image: 'images/screen.png',
+                                    sticky: false,
+                                    time: ''
+                                });
+                            }
+                        });
+                    },
+                    error: function (result) {
+                        if (result.status == 401) {
+                            jQuery.gritter.add({
+                                title: '错误',
+                                text: '权限认证失败，请重新进行登陆',
+                                class_name: 'growl-danger',
+                                image: 'images/screen.png',
+                                sticky: false,
+                                time: ''
+                            });
+                        } else {
+                            alert(result.status);
+                            jQuery.gritter.add({
+                                title: '错误',
+                                text: '文章发表失败',
+                                class_name: 'growl-danger',
+                                image: 'images/screen.png',
+                                sticky: false,
+                                time: ''
+                            });
+                        }
+                    }
+                });
+
+            });
+        });
+
+    </script>
+</head>
+
+<body class="">
+    <div class="page">
+        <div class="flex-fill">
+            <div class="header py-4">
+                <div class="container">
+                    <div class="d-flex">
+                        <a class="header-brand" href="./dashboard.html">
+                            <img src="./assets/images/blog.png" class="header-brand-img" />
+                        </a>
+                        <div class="d-flex order-lg-2 ml-auto">
+                            <div class="dropdown d-none d-md-flex">
+                                <a class="nav-link icon" title="注销登陆" id="log-out">
+                                    <i class="fe fe-user-x"></i>
+                                </a>
+                                <a href="./postarticle.html" class="nav-link icon" title="文章发布">
+                                    <i class="fe fe-share"></i>
+                                </a>
+                            </div>
+                            <div>
+                                <a class="nav-link pr-0 leading-none">
+                                    <span class="avatar" id="user-avator" style="background-image: url(./useravator/niming.jpg)"></span>
+                                    <span class="ml-2 d-none d-lg-block">
+                                        <span class="text-default" id="user-name">匿名用户</span>
+                                        <small class="text-muted d-block mt-1" id="user-gender">访客</small>
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                        <a href="#" class="header-toggler d-lg-none ml-3 ml-lg-0" data-toggle="collapse" data-target="#headerMenuCollapse">
+                            <span class="header-toggler-icon"></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="header collapse d-lg-flex p-0" id="headerMenuCollapse">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-lg-3 ml-auto">
+                            <form class="input-icon my-3 my-lg-0">
+                                <input type="search" class="form-control header-search" placeholder="Search&hellip;"
+                                    tabindex="1">
+                                <div class="input-icon-addon">
+                                    <i class="fe fe-search"></i>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-lg order-lg-first">
+                            <ul class="nav nav-tabs border-0 flex-column flex-lg-row">
+                                <li class="nav-item">
+                                    <a href="./dashboard.html" class="nav-link"><i class="fe fe-home"></i> 主页</a>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a href="./articlelist.html" class="nav-link"><i class="fe fe-calendar"></i>
+                                        技术随笔</a>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a href="./aboutauthor.html" class="nav-link" data-toggle="dropdown"><i class="fe fe-file"></i>
+                                        关于作者</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="my-3 my-md-5">
+                <div id="layout" class="container">
+                    <header>
+                        <h1>请在这里发表你的文章</h1>
+                        <p>Please write your article here!</p>
+                    </header>
+                    <span class="pull-left" style="line-height: 32px;margin-right: 20px;">文章类型</span>
+                    <select id="aiticle-type" class="form-control" style="margin-bottom: 10px;width: 255px;">
+                    </select>
+                    <span class="pull-left" style="line-height: 32px;margin-right: 20px;margin-bottom: 10px;">文章标题</span>
+                    <input id="article-title" type="text" class="form-control" style="margin-bottom:10px;width: 600px;" />
+
+                    <span class="pull-left" style="line-height: 32px;margin-right: 20px;margin-bottom: 10px;">文章概述</span>
+                    <input id="article-introduce" type="text" class="form-control" style="margin-bottom:10px;width: 600px;" />
+
+                    <span class="pull-left" style="line-height: 32px;margin-right: 20px;margin-bottom: 10px;">文章标签</span>
+                    <div class="form-group" id="title-tag">
+                        <div class="selectgroup selectgroup-pills">
+                            <label class="selectgroup-item">
+                                <input type="checkbox" name="value" value="HTML" class="selectgroup-input">
+                                <span class="selectgroup-button">HTML</span>
+                            </label>
+                            <label class="selectgroup-item">
+                                <input type="checkbox" name="value" value="C#" class="selectgroup-input">
+                                <span class="selectgroup-button">C#</span>
+                            </label>
+                            <label class="selectgroup-item">
+                                <input type="checkbox" name="value" value="NetCore" class="selectgroup-input">
+                                <span class="selectgroup-button">NetCore</span>
+                            </label>
+                            <label class="selectgroup-item">
+                                <input type="checkbox" name="value" value="Docker" class="selectgroup-input">
+                                <span class="selectgroup-button">Docker</span>
+                            </label>
+                            <label class="selectgroup-item">
+                                <input type="checkbox" name="value" value="微服务" class="selectgroup-input">
+                                <span class="selectgroup-button">微服务</span>
+                            </label>
+                            <label class="selectgroup-item">
+                                <input type="checkbox" name="value" value="Redis" class="selectgroup-input">
+                                <span class="selectgroup-button">Redis</span>
+                            </label>
+                            <label class="selectgroup-item">
+                                <input type="checkbox" name="value" value="MongoDB" class="selectgroup-input">
+                                <span class="selectgroup-button">MongoDB</span>
+                            </label>
+                            <label class="selectgroup-item">
+                                <input type="checkbox" name="value" value="Mysql" class="selectgroup-input">
+                                <span class="selectgroup-button">Mysql</span>
+                            </label>
+                        </div>
+                    </div>
+                    <form id="article_form">
+                        <div id="test-editormd">
+                            <textarea style="display:none;"></textarea>
+                        </div>
+                    </form>
+
+                    <div>
+                        <button id="submit" class="btn btn-primary custom-control-inline">发布文章</button>
+                        <label class="custom-control custom-checkbox custom-control-inline">
+                            <input id="IsRecommend" type="checkbox" class="custom-control-input" name="example-inline-checkbox1"
+                                checked>
+                            <span class="custom-control-label">是否推荐</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

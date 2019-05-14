@@ -1,0 +1,9 @@
+E:\个人博客\BackPoint\PostHost\Post.Core\bin\Release\netcoreapp2.2\Post.Core.deps.json
+E:\个人博客\BackPoint\PostHost\Post.Core\bin\Release\netcoreapp2.2\Post.Core.dll
+E:\个人博客\BackPoint\PostHost\Post.Core\bin\Release\netcoreapp2.2\Post.Core.pdb
+E:\个人博客\BackPoint\PostHost\Post.Core\obj\Release\netcoreapp2.2\Post.Core.csprojAssemblyReference.cache
+E:\个人博客\BackPoint\PostHost\Post.Core\obj\Release\netcoreapp2.2\Post.Core.csproj.CoreCompileInputs.cache
+E:\个人博客\BackPoint\PostHost\Post.Core\obj\Release\netcoreapp2.2\Post.Core.AssemblyInfoInputs.cache
+E:\个人博客\BackPoint\PostHost\Post.Core\obj\Release\netcoreapp2.2\Post.Core.AssemblyInfo.cs
+E:\个人博客\BackPoint\PostHost\Post.Core\obj\Release\netcoreapp2.2\Post.Core.dll
+E:\个人博客\BackPoint\PostHost\Post.Core\obj\Release\netcoreapp2.2\Post.Core.pdb

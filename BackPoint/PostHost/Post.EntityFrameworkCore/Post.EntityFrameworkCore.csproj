@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20190507132549_Article-Entity.cs" />
+    <Compile Remove="Migrations\20190507132549_Article-Entity.Designer.cs" />
+    <Compile Remove="Migrations\20190508023538_Add-LeaveMessage-JYZ.cs" />
+    <Compile Remove="Migrations\20190508023538_Add-LeaveMessage-JYZ.Designer.cs" />
+    <Compile Remove="Migrations\20190508024447_Add-UserAvator.cs" />
+    <Compile Remove="Migrations\20190508024447_Add-UserAvator.Designer.cs" />
+    <Compile Remove="Migrations\20190508132932_modify-pageview.cs" />
+    <Compile Remove="Migrations\20190508132932_modify-pageview.Designer.cs" />
+    <Compile Remove="Migrations\20190510073040_Init-Database-JYZ.cs" />
+    <Compile Remove="Migrations\20190510073040_Init-Database-JYZ.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Abp.EntityFrameworkCore" Version="4.5.0" />
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="2.2.0" />
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql.Design" Version="1.1.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Post.Core\Post.Core.csproj" />
+  </ItemGroup>
+
+</Project>
